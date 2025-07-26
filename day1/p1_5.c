@@ -1,22 +1,36 @@
 #include <stdio.h>
 #include <stdlib.h>
-int main(){
-    int n,i,*p,big;
-    printf("n: ");
-    scanf("%d",&n);
-    p=(int*)malloc(n*sizeof(int));
-    if(p==0){
-        printf("no mem\n");
+
+int main() {
+    int n, i;
+    int *arr;
+    int max;
+
+    printf("Enter the number of elements: ");
+    scanf("%d", &n);
+
+    arr = (int *)malloc(n * sizeof(int));
+
+    if (arr == NULL) {
+        printf("Memory allocation failed!\n");
         return 1;
     }
-    printf("val: ");
-    for(i=0;i<n;i++)
-        scanf("%d",&p[i]);
-    big=p[0];
-    for(i=1;i<n;i++){
-        if(p[i]>big) big=p[i];
+
+    printf("Enter %d elements:\n", n);
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
     }
-    printf("big is %d\n",big);
-    free(p);
+
+    max = arr[0];
+    for (i = 1; i < n; i++) {
+        if (arr[i] > max) {
+            max = arr[i];
+        }
+    }
+
+    printf("The largest element is: %d\n", max);
+
+    free(arr);
+
     return 0;
 }

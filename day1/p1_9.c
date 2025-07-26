@@ -1,18 +1,37 @@
-#include <stdio.h>
-int swp(int *a,int *b){
-    int t=*a;
-    *a=*b;
-    *b=t;
-    return 0;
+#include<stdio.h>
+#include<stdlib.h>
+
+void swap(int *x, int *y)
+{
+    int temp;
+    temp = *x;
+    *x = *y;
+    *y = temp;
 }
-int main(int c,char *v[]){
-    if(c!=3){
-        printf("use: %s n1 n2\n",v[0]);
+
+int main(int argc, char *argv[])
+{
+    int a, b;
+    
+    if(argc != 3)
+    {
+        printf("Please enter exactly 2 numbers\n");
+        printf("Usage: %s <number1> <number2>\n", argv[0]);
         return 1;
     }
-    int x=atoi(v[1]);
-    int y=atoi(v[2]);
-    swp(&x,&y);
-    printf("x=%d y=%d\n",x,y);
+    
+    a = atoi(argv[1]);
+    b = atoi(argv[2]);
+    
+    printf("Before swapping:\n");
+    printf("a = %d\n", a);
+    printf("b = %d\n", b);
+    
+    swap(&a, &b);
+    
+    printf("\nAfter swapping:\n");
+    printf("a = %d\n", a);
+    printf("b = %d\n", b);
+    
     return 0;
 }
