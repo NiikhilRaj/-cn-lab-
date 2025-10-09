@@ -11,7 +11,7 @@ int main()
     int sid, sbs;
     struct sockaddr_in sadd;
     sid = socket(AF_INET, SOCK_DGRAM, 0);
-    if(sid=-1)
+    if(sid==-1)
     {
         printf("\n No socket for server application is not created successfully.");
         exit(0);
@@ -22,12 +22,11 @@ int main()
     sadd.sin_addr.s_addr=htonl(INADDR_ANY);
     memset(&(sadd.sin_zero), '\0', 8);
     sbs=bind(sid, (struct sockaddr *) &sadd, sizeof(sadd));
-    if (sbs=-1)
+    if (sbs==-1)
     {
         printf("\nBinding Failure - Server Side");
         exit(0);
     }
-    printf("Failure Server Side");
     printf("\nBinding Successful - Server Side");
     close(sid);
     return 0;

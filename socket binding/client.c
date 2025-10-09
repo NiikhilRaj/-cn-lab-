@@ -21,8 +21,8 @@ int main()
     cadd.sin_port=htons(1026);
     cadd.sin_addr.s_addr=htonl(INADDR_ANY);
     memset(&(cadd.sin_zero), '\0', 8);
-    sbs=bind(sid, (struct sockaddr *) &cadd, sizeof(cadd));
-    if (cbs=-1)
+    cbs=bind(cid, (struct sockaddr *) &cadd, sizeof(cadd));
+    if (cbs==-1)
     {
         printf("\nBinding Failure - Client Side");
         exit(0);

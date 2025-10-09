@@ -10,7 +10,7 @@ int main()
 {
     int sid;
     sid = socket(AF_INET, SOCK_DGRAM, 0);
-    if(sid=-1)
+    if(sid==-1)
     {
         printf("\n No socket for server application is created successfully.");
         exit(0);

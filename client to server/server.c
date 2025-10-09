@@ -4,6 +4,7 @@
 #include <arpa/inet.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 int main()
 {
     int sid, sbs, sbyte;
@@ -11,7 +12,7 @@ int main()
     struct sockaddr_in sadd, sender;
     socklen_t addsize;
     sid = socket(AF_INET, SOCK_DGRAM, 0);
-    if(sid=-1)
+    if(sid==-1)
     {
         printf("\n No socket for server application is not created successfully.");
         exit(0);
@@ -27,7 +28,7 @@ int main()
         printf("\nBinding Failure - Server Side");
         exit(0);
     }
-    printf("\nBinding Failure Server Side");
+    printf("\nBinding Successful - Server Side");
     addsize = sizeof(sender);
     sbyte=recvfrom(sid, sstr, 100, 0, (struct sockaddr *) &sender, &addsize);
     if (sbyte == -1)

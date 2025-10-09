@@ -22,8 +22,8 @@ int main()
     cadd.sin_port=htons(1026);
     cadd.sin_addr.s_addr=htonl(INADDR_ANY);
     memset(&(cadd.sin_zero), '\0', 8);
-    cbs=bind(sid, (struct sockaddr *) &cadd, sizeof(cadd));
-    if (cbs=-1)
+    cbs=bind(cid, (struct sockaddr *) &cadd, sizeof(cadd));
+    if (cbs==-1)
     {
         printf("\nBinding Failure - Client Side");
         exit(0);
@@ -36,7 +36,7 @@ int main()
     printf("\nEnter a message:");
     fgets(cstr, 100, stdin); 
     cstr[strcspn(cstr, "\n")] = 0; 
-    cbyte = sendto(cid, cstr, sizeof(cstr), 0, (struct sockaddr *) &receiver, sizeof(receiver));
+    cbyte = sendto(cid, cstr, strlen(cstr), 0, (struct sockaddr *) &receiver, sizeof(receiver));
     if (cbyte==-1)
     {
         printf("\nFrom Client Side No message sent");
@@ -45,6 +45,6 @@ int main()
     cstr[cbyte] = '\0';
     printf("\nClient sent: %s", cstr);
     printf("\n%d bytes sent", cbyte);
-    pclose(cid);
+    close(cid);
     return 0;
 }

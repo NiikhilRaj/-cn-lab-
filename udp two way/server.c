@@ -28,7 +28,7 @@ int main()
         printf("\nBinding Failure - Server Side");
         exit(0);
     }
-    printf("\nBinding Failure Server Side");
+    printf("\nBinding Successful - Server Side");
     addsize = sizeof(sender);
     sbyte=recvfrom(sid, sstr, 100, 0, (struct sockaddr *) &sender, &addsize);
     if (sbyte==-1)
@@ -40,9 +40,10 @@ int main()
     printf("\nServer received: %s", sstr);
     printf("\n%d bytes received", sbyte);
     printf("\nServer wants to send: ");
-    scanf("%s", sstr);
-    sbyte=sendto(sid, sstr, sizeof(cstr), 0, (struct sockaddr *) &sender, sizeof(sender));
-    if (scbyte==-1)
+    fgets(sstr, 100, stdin);
+    sstr[strcspn(sstr, "\n")] = 0;
+    sbyte=sendto(sid, sstr, strlen(sstr), 0, (struct sockaddr *) &sender, sizeof(sender));
+    if (sbyte==-1)
     {
         printf("\nFrom Server Side No message sent");
         exit(0);
